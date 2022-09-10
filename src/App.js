@@ -1,24 +1,20 @@
-import logo from './logo.svg';
+import CountUp from 'components/countUp/CountUp';
+
+import SUBSCRIBERS_DATA from 'data/SubscribersData';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="section-padding bg-height">
+      <div className="container container-padding">
+        <div className="center">
+          {SUBSCRIBERS_DATA.map(subscriber=>(
+            <CountUp keys={subscriber.id} subscriber={subscriber} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
