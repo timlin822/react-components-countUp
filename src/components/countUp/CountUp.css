@@ -1,4 +1,9 @@
 .count-up{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.count-up-item{
     text-align: center;
     margin: 0px 50px;
 }

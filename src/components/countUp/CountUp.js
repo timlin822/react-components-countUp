@@ -1,35 +1,15 @@
-import {useState,useEffect} from 'react';
+import CountUpItem from './CountUpItem';
+
+import SUBSCRIBERS_DATA from 'data/SubscribersData';
 
 import './CountUp.css';
 
-const CountUp=({subscriber})=>{
-    const [count,setCount]=useState(0);
-    const step=subscriber.number/300;
-
-    const updateCount=()=>{
-        if(count>=subscriber.number){
-            return setCount(subscriber.number);
-        }
-        else{
-            setCount(Math.ceil(count+step));
-        }
-    };
-
-    useEffect(()=>{
-        const timeoutId=setTimeout(()=>{
-            updateCount(); 
-        },5);
-
-        return ()=>{
-            clearTimeout(timeoutId);
-        }
-    },[count]);
-    
+const CountUp=()=>{
     return (
         <div className="count-up">
-            <div className="count-icon">{subscriber.icon}</div>
-            <div className="count-number">{count}</div>
-            <div className="count-text">Subscribers</div>
+            {SUBSCRIBERS_DATA.map(subscriber=>(
+                <CountUpItem key={subscriber.id} subscriber={subscriber} />
+            ))}
         </div>
     );
 }
